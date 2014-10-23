@@ -1,0 +1,469 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>610</width>
+    <height>492</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Erdos</string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>../iconos/icono.png</normaloff>../iconos/icono.png</iconset>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="0" column="0">
+     <widget class="QTabWidget" name="tabWidget">
+      <property name="currentIndex">
+       <number>-1</number>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>610</width>
+     <height>27</height>
+    </rect>
+   </property>
+   <property name="defaultUp">
+    <bool>false</bool>
+   </property>
+   <property name="nativeMenuBar">
+    <bool>true</bool>
+   </property>
+   <widget class="QMenu" name="menuArchivo">
+    <property name="title">
+     <string>&amp;Archivo</string>
+    </property>
+    <addaction name="actionNuevo"/>
+    <addaction name="actionAbrir"/>
+    <addaction name="separator"/>
+    <addaction name="actionGuardar"/>
+    <addaction name="actionGuardar_como"/>
+    <addaction name="separator"/>
+    <addaction name="actionCerrar"/>
+    <addaction name="separator"/>
+    <addaction name="actionSalir"/>
+   </widget>
+   <widget class="QMenu" name="menuAyuda">
+    <property name="title">
+     <string>A&amp;yuda</string>
+    </property>
+    <addaction name="actionManual_de_usuario"/>
+    <addaction name="separator"/>
+    <addaction name="actionAcerca_de_Erdos"/>
+    <addaction name="actionAcerca_de_Qt"/>
+   </widget>
+   <widget class="QMenu" name="menuHerramientas">
+    <property name="title">
+     <string>&amp;Herramientas</string>
+    </property>
+    <addaction name="actionEjecutar"/>
+    <addaction name="actionMostrar_salida"/>
+    <addaction name="actionExportar"/>
+   </widget>
+   <widget class="QMenu" name="menuEdicion">
+    <property name="title">
+     <string>&amp;Edicion</string>
+    </property>
+    <addaction name="actionDeshacer"/>
+    <addaction name="actionRehacer"/>
+    <addaction name="separator"/>
+    <addaction name="actionCopiar"/>
+    <addaction name="actionPegar"/>
+    <addaction name="separator"/>
+    <addaction name="actionEliminar"/>
+    <addaction name="actionEditar"/>
+   </widget>
+   <addaction name="menuArchivo"/>
+   <addaction name="menuEdicion"/>
+   <addaction name="menuHerramientas"/>
+   <addaction name="menuAyuda"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <widget class="QToolBar" name="toolBar">
+   <property name="windowTitle">
+    <string>toolBar</string>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>30</width>
+     <height>30</height>
+    </size>
+   </property>
+   <property name="toolButtonStyle">
+    <enum>Qt::ToolButtonIconOnly</enum>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>LeftToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="actionSentencia"/>
+   <addaction name="actionEntrada"/>
+   <addaction name="actionSalida"/>
+   <addaction name="actionSi"/>
+   <addaction name="actionPara"/>
+   <addaction name="actionMientras"/>
+   <addaction name="actionHasta"/>
+   <addaction name="actionCaso"/>
+  </widget>
+  <action name="actionNuevo">
+   <property name="icon">
+    <iconset>
+     <normaloff>../iconos/48px-Document-new.png</normaloff>../iconos/48px-Document-new.png</iconset>
+   </property>
+   <property name="text">
+    <string>Nuevo</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+N</string>
+   </property>
+   <property name="iconVisibleInMenu">
+    <bool>true</bool>
+   </property>
+  </action>
+  <action name="actionAbrir">
+   <property name="icon">
+    <iconset>
+     <normaloff>../iconos/48px-Document-open.png</normaloff>../iconos/48px-Document-open.png</iconset>
+   </property>
+   <property name="text">
+    <string>Abrir</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+O</string>
+   </property>
+   <property name="iconVisibleInMenu">
+    <bool>true</bool>
+   </property>
+  </action>
+  <action name="actionGuardar">
+   <property name="icon">
+    <iconset>
+     <normaloff>../iconos/48px-Document-save.png</normaloff>../iconos/48px-Document-save.png</iconset>
+   </property>
+   <property name="text">
+    <string>Guardar</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+S</string>
+   </property>
+   <property name="iconVisibleInMenu">
+    <bool>true</bool>
+   </property>
+  </action>
+  <action name="actionSalir">
+   <property name="icon">
+    <iconset>
+     <normaloff>../iconos/48px-System-log-out.png</normaloff>../iconos/48px-System-log-out.png</iconset>
+   </property>
+   <property name="text">
+    <string>Salir</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Q</string>
+   </property>
+   <property name="iconVisibleInMenu">
+    <bool>true</bool>
+   </property>
+  </action>
+  <action name="actionEjecutar">
+   <property name="icon">
+    <iconset>
+     <normaloff>../iconos/48px-Application-x-executable.png</normaloff>../iconos/48px-Application-x-executable.png</iconset>
+   </property>
+   <property name="text">
+    <string>Ejecutar diagrama</string>
+   </property>
+   <property name="shortcut">
+    <string>F5</string>
+   </property>
+   <property name="iconVisibleInMenu">
+    <bool>true</bool>
+   </property>
+  </action>
+  <action name="actionAcerca_de_Erdos">
+   <property name="icon">
+    <iconset>
+     <normaloff>../iconos/48px-Dialog-information_on.png</normaloff>../iconos/48px-Dialog-information_on.png</iconset>
+   </property>
+   <property name="text">
+    <string>Acerca de Erdos</string>
+   </property>
+   <property name="iconVisibleInMenu">
+    <bool>true</bool>
+   </property>
+  </action>
+  <action name="actionManual_de_usuario">
+   <property name="icon">
+    <iconset>
+     <normaloff>../iconos/48px-Help-contents.png</normaloff>../iconos/48px-Help-contents.png</iconset>
+   </property>
+   <property name="text">
+    <string>Manual de usuario</string>
+   </property>
+   <property name="shortcut">
+    <string>F1</string>
+   </property>
+   <property name="iconVisibleInMenu">
+    <bool>true</bool>
+   </property>
+  </action>
+  <action name="actionCopiar">
+   <property name="icon">
+    <iconset>
+     <normaloff>../iconos/48px-Edit-copy.png</normaloff>../iconos/48px-Edit-copy.png</iconset>
+   </property>
+   <property name="text">
+    <string>Copiar</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+C</string>
+   </property>
+   <property name="iconVisibleInMenu">
+    <bool>true</bool>
+   </property>
+  </action>
+  <action name="actionPegar">
+   <property name="icon">
+    <iconset>
+     <normaloff>../iconos/48px-Edit-paste.png</normaloff>../iconos/48px-Edit-paste.png</iconset>
+   </property>
+   <property name="text">
+    <string>Pegar</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+V</string>
+   </property>
+   <property name="iconVisibleInMenu">
+    <bool>true</bool>
+   </property>
+  </action>
+  <action name="actionDeshacer">
+   <property name="icon">
+    <iconset>
+     <normaloff>../iconos/48px-Edit-undo.png</normaloff>../iconos/48px-Edit-undo.png</iconset>
+   </property>
+   <property name="text">
+    <string>Deshacer</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Z</string>
+   </property>
+   <property name="iconVisibleInMenu">
+    <bool>true</bool>
+   </property>
+  </action>
+  <action name="actionRehacer">
+   <property name="icon">
+    <iconset>
+     <normaloff>../iconos/48px-Edit-redo.png</normaloff>../iconos/48px-Edit-redo.png</iconset>
+   </property>
+   <property name="text">
+    <string>Rehacer</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Y</string>
+   </property>
+   <property name="iconVisibleInMenu">
+    <bool>true</bool>
+   </property>
+  </action>
+  <action name="actionEliminar">
+   <property name="icon">
+    <iconset>
+     <normaloff>../iconos/48px-Edit-delete.png</normaloff>../iconos/48px-Edit-delete.png</iconset>
+   </property>
+   <property name="text">
+    <string>Eliminar</string>
+   </property>
+   <property name="shortcut">
+    <string>Del</string>
+   </property>
+   <property name="iconVisibleInMenu">
+    <bool>true</bool>
+   </property>
+  </action>
+  <action name="actionSentencia">
+   <property name="icon">
+    <iconset>
+     <normaloff>../iconos/sentencia.png</normaloff>../iconos/sentencia.png</iconset>
+   </property>
+   <property name="text">
+    <string>Sentencia</string>
+   </property>
+  </action>
+  <action name="actionSi">
+   <property name="icon">
+    <iconset>
+     <normaloff>../iconos/si.png</normaloff>../iconos/si.png</iconset>
+   </property>
+   <property name="text">
+    <string>Si</string>
+   </property>
+  </action>
+  <action name="actionPara">
+   <property name="icon">
+    <iconset>
+     <normaloff>../iconos/para.png</normaloff>../iconos/para.png</iconset>
+   </property>
+   <property name="text">
+    <string>Para</string>
+   </property>
+  </action>
+  <action name="actionMientras">
+   <property name="icon">
+    <iconset>
+     <normaloff>../iconos/mientras.png</normaloff>../iconos/mientras.png</iconset>
+   </property>
+   <property name="text">
+    <string>Mientras</string>
+   </property>
+  </action>
+  <action name="actionHasta">
+   <property name="icon">
+    <iconset>
+     <normaloff>../iconos/hasta.png</normaloff>../iconos/hasta.png</iconset>
+   </property>
+   <property name="text">
+    <string>Hasta</string>
+   </property>
+  </action>
+  <action name="actionCaso">
+   <property name="icon">
+    <iconset>
+     <normaloff>../iconos/caso.png</normaloff>../iconos/caso.png</iconset>
+   </property>
+   <property name="text">
+    <string>Caso</string>
+   </property>
+  </action>
+  <action name="actionLimpiar">
+   <property name="text">
+    <string>Limpiar</string>
+   </property>
+  </action>
+  <action name="actionReload">
+   <property name="text">
+    <string>Reload</string>
+   </property>
+  </action>
+  <action name="actionCodigo">
+   <property name="text">
+    <string>Codigo</string>
+   </property>
+  </action>
+  <action name="actionSalida">
+   <property name="icon">
+    <iconset>
+     <normaloff>../iconos/salida.png</normaloff>../iconos/salida.png</iconset>
+   </property>
+   <property name="text">
+    <string>Salida</string>
+   </property>
+  </action>
+  <action name="actionEntrada">
+   <property name="icon">
+    <iconset>
+     <normaloff>../iconos/entrada.png</normaloff>../iconos/entrada.png</iconset>
+   </property>
+   <property name="text">
+    <string>Entrada</string>
+   </property>
+  </action>
+  <action name="actionCerrar">
+   <property name="icon">
+    <iconset>
+     <normaloff>../iconos/48px-Process-stop.png</normaloff>../iconos/48px-Process-stop.png</iconset>
+   </property>
+   <property name="text">
+    <string>Cerrar</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+W</string>
+   </property>
+   <property name="iconVisibleInMenu">
+    <bool>true</bool>
+   </property>
+  </action>
+  <action name="actionExportar">
+   <property name="icon">
+    <iconset>
+     <normaloff>../iconos/48px-Image-x-generic.png</normaloff>../iconos/48px-Image-x-generic.png</iconset>
+   </property>
+   <property name="text">
+    <string>Exportar</string>
+   </property>
+   <property name="iconVisibleInMenu">
+    <bool>true</bool>
+   </property>
+  </action>
+  <action name="actionGuardar_como">
+   <property name="icon">
+    <iconset>
+     <normaloff>../iconos/48px-Document-save-as.png</normaloff>../iconos/48px-Document-save-as.png</iconset>
+   </property>
+   <property name="text">
+    <string>Guardar como...</string>
+   </property>
+   <property name="iconVisibleInMenu">
+    <bool>true</bool>
+   </property>
+  </action>
+  <action name="actionEditar">
+   <property name="icon">
+    <iconset>
+     <normaloff>../iconos/48px-Text-x-generic_with_pencil.png</normaloff>../iconos/48px-Text-x-generic_with_pencil.png</iconset>
+   </property>
+   <property name="text">
+    <string>Editar</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+E</string>
+   </property>
+   <property name="iconVisibleInMenu">
+    <bool>true</bool>
+   </property>
+  </action>
+  <action name="actionAcerca_de_Qt">
+   <property name="icon">
+    <iconset>
+     <normaloff>../iconos/Qt-logo.png</normaloff>../iconos/Qt-logo.png</iconset>
+   </property>
+   <property name="text">
+    <string>Acerca de Qt</string>
+   </property>
+   <property name="iconVisibleInMenu">
+    <bool>true</bool>
+   </property>
+  </action>
+  <action name="actionMostrar_salida">
+   <property name="icon">
+    <iconset>
+     <normaloff>../iconos/48px-Utilities-terminal.png</normaloff>../iconos/48px-Utilities-terminal.png</iconset>
+   </property>
+   <property name="text">
+    <string>Mostrar salida</string>
+   </property>
+   <property name="iconVisibleInMenu">
+    <bool>true</bool>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
