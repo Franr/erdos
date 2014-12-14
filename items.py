@@ -28,12 +28,18 @@ class ControladorGUI(object):
 
     def eliminar_seleccionado(self):
         items = self.selectedItems()
-        if items:
-            item = items[0]
-            if type(item) is not ErdosVacioItem:
-                item.borrar()
+        if not items:
+            return
+
+        item = items[0]
+        self.eliminar_item(item)
+
+    def eliminar_item(self, item, historial=True):
+        if type(item) is not ErdosVacioItem:
+            item.borrar()
+            if historial:
                 self.guardar_historial()
-                self.reposicionar()
+            self.reposicionar()
 
     def selectedItems(self):
         return self.scene.selectedItems()
@@ -238,6 +244,26 @@ class ErdosScene(QtGui.QGraphicsScene):
     def limpiar(self):
         self.clear()
 
+    def droppeado(self, drop_destino):
+
+        item_mover = self.selectedItems()[0]
+        # no se puede droppear sobre uno mismo
+        if item_mover == drop_destino:
+            return
+        # no se puede mover un item vacio
+        if type(item_mover) is ErdosVacioItem:
+            return
+        # no se puede droppear sobre un item contenido
+        if type(drop_destino) is ErdosVacioItem:
+            uid_destino = drop_destino.padre.nodo.uid
+        else:
+            uid_destino = drop_destino.nodo.uid
+        if item_mover.nodo.get_nodo(uid_destino)[0]:
+            return
+
+        self.controlador.regen(item_mover.nodo, drop_destino)
+        self.controlador.eliminar_item(item_mover, False)
+
 
 class ErdosBaseItem(QtGui.QGraphicsRectItem):
 
@@ -270,8 +296,21 @@ class ErdosRectItem(ErdosBaseItem):
     def __init__(self, padre):
         super(ErdosRectItem, self).__init__(padre)
         self.setFlag(QtGui.QGraphicsItem.ItemIsSelectable, True)
+        self.setAcceptDrops(True)
         self.resaltado = False
         self.txt = None
+
+    def dragEnterEvent(self, event):
+        event.setAccepted(True)
+
+    def dropEvent(self, event):
+        self.scene().droppeado(self)
+
+    def mouseMoveEvent(self, event):
+        drag = QtGui.QDrag(event.widget())
+        mime = QtCore.QMimeData()
+        drag.setMimeData(mime)
+        drag.exec_()
 
     def dibujar(self):
         self.setRect(QtCore.QRectF(0, 0, self.get_largo(), self.get_alto()))
